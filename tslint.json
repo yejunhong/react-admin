@@ -8,6 +8,7 @@
     ]
   },
   "rules": {
+    "no-trailing-whitespace": false,
     "ordered-imports": false,
     "interface-name" : [true, "never-prefix"]
   }

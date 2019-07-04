@@ -1,10 +1,9 @@
-import router from '../router/index';
-import { Notification, MessageBox } from 'element-ui';
+import { notification, Modal } from 'antd';
 import { Request, InterceptorsInterface } from '../Lib/Request';
 import { Cache } from '../Lib/Caches';
-import JSONBigInt from 'json-bigint';
+// import JSONBigInt from 'json-bigint';
 
-let newRequet: any = new Request({
+const newRequet: any = new Request({
   baseURL: process.env.VUE_APP_API_URL, //
   // baseURL: '/MuzenBAS',
   timeout: 3000, // 请求超时时间 毫秒
@@ -32,16 +31,13 @@ class Intercept implements InterceptorsInterface {
    */
   public ResponseIntercept(response: any) {
     if (response.data.code === 10004) {
-      MessageBox({
-        title: '授权提示',
-        message: '登录授权已过期',
-        type: 'warning',
-        confirmButtonText: '重新登录',
-      }).then(() => {
-        // alert(1)
-        newRequet.Cancel();
-        router.push('/login');
-      });
+      Modal.error({
+        content: '登录授权已过期',
+        onOk: () => {
+          newRequet.Cancel();
+          // 退出登录
+        }
+      })
     }
     return response;
   }
@@ -51,12 +47,8 @@ class Intercept implements InterceptorsInterface {
    * @param err
    */
   public Error(err: any) {
-    Notification({
-      title: '错误提示',
-      message: err,
-      type: 'error',
-      position: 'top-right',
-      duration: 3000,
+    notification.open({
+      message: '错误提示',
     });
   }
 }
