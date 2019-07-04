@@ -1,5 +1,5 @@
 import request from '../request';
-import Time from '@/lib/time';
+import Time from '../../Lib/Time';
 interface ArticleParam{
   id?: number;
   title: string;

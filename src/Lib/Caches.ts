@@ -1,5 +1,5 @@
 // localStorage（本地存储）和sessionStorage（会话存储）
-import Time from './time';
+import Time from './Time';
 
 interface CacheInterface {
     /**

@@ -1,7 +1,7 @@
 import router from '../router/index';
 import { Notification, MessageBox } from 'element-ui';
-import { Request, InterceptorsInterface } from '@/lib/request';
-import { Cache } from '@/lib/caches';
+import { Request, InterceptorsInterface } from '../Lib/Request';
+import { Cache } from '../Lib/Caches';
 import JSONBigInt from 'json-bigint';
 
 let newRequet: any = new Request({
