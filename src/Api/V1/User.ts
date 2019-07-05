@@ -1,4 +1,4 @@
-import request from '../request';
+import request from '../Request';
 import md5 from 'js-md5';
 /**
  * 操作用户接口
@@ -37,7 +37,7 @@ class User {
    */
   public async Login(id: any, password: any): Promise<any> {
     // const info = await request.Post('/MuzenBAS/User/Login', {name: id, password: md5(password)});
-    const info = await request.Post('/MuzenBAS/User/Login', {id: parseInt(id), password: md5(password)});
+    const info = await request.Post('/MuzenBAS/User/Login', {id: parseInt(id, 10), password: md5(password)});
     if (info.code === 0) { // 登录成功返回
       return info.data.token;
     }

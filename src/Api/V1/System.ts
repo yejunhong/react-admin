@@ -1,10 +1,10 @@
-import request from '../request';
-import Time from '@/lib/time';
+import request from '../Request';
+import Time from '../../Lib/Time';
 
 interface MessageTemp {
   id?: number;
   title?: string;
-  content?: string;
+  content?: any;
   msg_type?: number;
   jump_url?: string;
 }
@@ -51,14 +51,14 @@ class System {
     }
     const p = {
       title: param.title, // 标题
-      content: param.content, // 内容
-      user_type: param.user_type, // 用户类型1:全部,2:条件,3:指定
-      user: '', // 条件
-      system_type: param.system_type, // 1:全部,2:android,3:ios
-      push_time: param.push_time,
-      notify_app: param.notify_app, // 是否同步到系统消息，0:是,1:否
-      jump_type: param.jump_type, // 跳转类型0:无,1:h5,2:内部app
+      // content: param.content, // 内容
       jump_content: 'test',	 // 跳转内容
+      jump_type: param.jump_type, // 跳转类型0:无,1:h5,2:内部app
+      user: '1111', // 条件
+      user_type: param.user_type, // 用户类型1:全部,2:条件,3:指定
+      notify_app: param.notify_app, // 是否同步到系统消息，0:是,1:否
+      push_time: param.push_time,
+      system_type: param.system_type, // 1:全部,2:android,3:ios
     };
     const res = await request.Post('/MuzenBAS/User/PushAdd', p);
     if (res.code === 0) { // 创建成功
@@ -122,7 +122,7 @@ class System {
    */
   public async CreateAd(param: any) {
     // 如果设置了时间
-    let p: AdParam = {
+    const p: AdParam = {
       title: param.title,						// 标题
       img: param.img,							// 图片
       type: param.type,								// 广告类型，0:闪屏,1:首页弹窗
@@ -245,7 +245,7 @@ class System {
    *      }
    */
   public async CreateMessageTemp(param: any) {
-    let p: MessageTemp = {
+    const p: MessageTemp = {
       title: param.title, // 标题
       content: param.content,	// 内容
       msg_type: param.msg_type,	//

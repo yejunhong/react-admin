@@ -1,4 +1,4 @@
-import request from '../request';
+import request from '../Request';
 import Time from '../../Lib/Time';
 interface ArticleParam{
   id?: number;
@@ -24,7 +24,7 @@ class Content {
    */
   public async ArticleCreate(param: any) {
 
-    let p: ArticleParam = {
+    const p: ArticleParam = {
       title: param.title,						// 标题
       url: param.url,					// 跳转内容
     };

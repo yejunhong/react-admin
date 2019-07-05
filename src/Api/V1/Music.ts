@@ -1,4 +1,3 @@
-import request from '../request';
 
 /**
  * 操作用户接口
