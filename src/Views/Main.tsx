@@ -33,6 +33,12 @@ class App extends React.Component {
     });
   };
 
+  public onEdit = (targetKey: any, action: any) => {
+    console.log(1111)
+    this[action](targetKey);
+  };
+
+
   public render() {
     return (
       <Layout>
@@ -48,9 +54,13 @@ class App extends React.Component {
               onClick={this.toggle}
             />
           </Header>
-          <Tabs defaultActiveKey="1" tabPosition="top" style={{ height: 220 }}>
+          <Tabs defaultActiveKey="1" tabPosition="top" onEdit={this.onEdit}>
             {[1, 2, 3, 4, 5, 6].map(i => (
-              <Tabs.TabPane tab={`Tab-${i}`} key={i + ''}>1</Tabs.TabPane>
+              <Tabs.TabPane tab={
+              <span>
+                <Icon type="apple" />
+                Tab {i}
+              </span>} key={i + ''}/>
             ))}
           </Tabs>
           <Content
