@@ -9,18 +9,30 @@ import Login from './Views/Login';
 import Test from './Views/Test';
 import Test1 from './Views/Test1';
 
+const config = [
+  {
+    path: '/login',
+    component: Login,
+    auth: '', // 子级全部使用该授权
+    children: [
+
+    ]
+  },
+];
+console.log(config);
+
 const Router: React.FC = () => {
   return (
     <HashRouter>
-      <Route path="/login" component={Login} />
-      <Main>
-        <Switch>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Main>
           <Route exact={true} path="/" component={Test} />
           <Route exact={true} path="/test" component={Test} />
           <Route exact={true} path="/test1" component={Test1} />
           <Route path="*" component={Test} />
-        </Switch>
-      </Main>
+        </Main>
+      </Switch>
     </HashRouter>
   );
 };
