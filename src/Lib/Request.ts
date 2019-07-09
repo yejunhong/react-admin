@@ -1,20 +1,21 @@
-import {AxiosRequestConfig, AxiosInstance} from 'axios';
+import {AxiosRequestConfig, AxiosInstance, AxiosResponse, AxiosError} from 'axios';
 import axios from 'axios';
 import qs from 'qs';
 
+// 用于取消所有请求
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
 
-interface InterceptorsInterface {
-  RequestIntercept(config: any): any;
-  ResponseIntercept(config: any): any;
-  Error(err: any): any;
+interface Interceptors { // 拦截器
+  Request(config: AxiosRequestConfig): AxiosRequestConfig;
+  Response(config: AxiosResponse): AxiosResponse;
+  Error(err: AxiosError): void;
 }
 
 class Request {
 
   public RequestObject: AxiosInstance;
-  public Interceptors!: InterceptorsInterface;
+  public Interceptors!: Interceptors;
 
   /**
    * 实例一个请求
@@ -23,10 +24,8 @@ class Request {
     this.RequestObject = axios.create(param);
   }
 
-  public SetInterceptors(interceptors: InterceptorsInterface) {
+  public SetInterceptors(interceptors: Interceptors) {
     this.Interceptors = interceptors;
-    this.SetRequestInterceptors();
-    this.SetResponseInterceptors();
   }
 
   /**
@@ -38,7 +37,7 @@ class Request {
     this.RequestObject.interceptors.request.use((config: any) => {
       // 在发送请求之前做某事
       config.cancelToken = source.token;
-      return this.Interceptors.RequestIntercept(config);
+      return this.Interceptors.Request(config);
     }, (error: any) => {
       // 请求错误时做些事
       this.Interceptors.Error(error);
@@ -53,7 +52,7 @@ class Request {
     // 添加响应拦截器
     this.RequestObject.interceptors.response.use((response: any) => {
       // 对响应数据做些事
-      return this.Interceptors.ResponseIntercept(response);
+      return this.Interceptors.Response(response);
     }, (error: any) => {
       // 请求错误时做些事
       this.Interceptors.Error(error);
@@ -101,5 +100,5 @@ class Request {
 
 export {
   Request,
-  InterceptorsInterface,
+  Interceptors,
 };

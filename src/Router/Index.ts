@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { Router, Switch, Route } from 'react-router';
+import React from 'react';
+import {HashRouter} from 'react-router-dom';
+import { Switch, Route, RouteComponentProps } from 'react-router';
 import Main from '../Views/Main';
 import Login from '../Views/Login';
 import Test from '../Views/Test';
@@ -9,68 +10,51 @@ interface RouterParam {
   path?: string;
   exact?: boolean;
   auth?: string;
-  component?: React.ReactNode;
+  component: React.ReactNode;
   children?: RouterParam[];
 }
 
-const routes: RouterParam[] = [
+const childrenR: RouterParam[] =  [
   {
-    path: '/login',
-    exact: true,
-    component: Login
+    path: '/test001',
+    component: Test
   },
   {
-    path: '/test1',
-    exact: true,
-    component: Main,
-    children: [
-      {
-        path: '/test1/admin',
-        exact: true,
-        component: Test,
-      }
-    ]
+    path: '/test002',
+    component: Test1
   },
-  {
-    component: Main,
-    children: [
-      {
-        path: '/',
-        exact: true,
-        component: Test
-      },
-      {
-        path: '/test',
-        component: Test
-      },
-      {
-        path: '*',
-        component: Test1
-      }
-    ]
-  }
 ];
-/*
-const Router: React.FC = () => {
-  return (
-    <HashRouter>
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Main>
-          <Route exact={true} path="/" component={Test} />
-          <Route exact={true} path="/test" component={Test} />
-          <Route exact={true} path="/test1" component={Test1} />
-          <Route path="*" component={Test} />
-        </Main>
-      </Switch>
-    </HashRouter>
-  );
-};*/
-export default React.createElement(Switch, {}, routes.map((route: RouterParam, k: number) => {
-  React.createElement(Route, {
-    render(): React.ReactNode {
-      return route.component;
+
+const routes: RouterParam[] = [
+  { path: '/login', component: Login },
+  { component: Main, children: childrenR }
+];
+
+// 迭代路由
+const SwitchRoute = React.createElement(Switch, {}, routes.map((route: RouterParam, k: number) => {
+  if (route.path === undefined && route.children !== undefined) {
+    const childrenRoute: React.ReactNode = route.children.map((children: RouterParam, ck: number) => {
+      return React.createElement(Route, {
+        key: k + ck,
+        path: children.path,
+        exact: true,
+        render(props: RouteComponentProps): React.ReactNode {
+          // 授权
+          console.log(props);
+          return React.createElement(children.component as any);
+        }
+      });
+    });
+    return React.createElement(route.component as any, {key: 1}, childrenRoute);
+  }
+  return React.createElement(Route, {
+    key: k,
+    path: route.path,
+    exact: true,
+    render(props: RouteComponentProps): React.ReactNode {
+      return React.createElement(route.component as any);
     }
   });
-  return 1;
-}));;
+}))
+
+export default React.createElement(HashRouter, {}, SwitchRoute);

@@ -1,8 +1,15 @@
 import { Layout, Menu, Icon, Tabs } from 'antd';
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../Assets/App.scss';
+
 const { Header, Sider, Content } = Layout;
 const CustomMenu: React.FC = () => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+  
   return (
     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
       <Menu.Item key="1">
@@ -11,12 +18,14 @@ const CustomMenu: React.FC = () => {
       </Menu.Item>
       <Menu.Item key="2">
         <Icon type="video-camera" />
-        <span>nav 2</span>
       </Menu.Item>
       <Menu.Item key="3">
         <Icon type="upload" />
         <span>nav 3</span>
       </Menu.Item>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
     </Menu>
   );
 };
