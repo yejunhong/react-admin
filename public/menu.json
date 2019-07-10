@@ -1,165 +1,117 @@
 [
     {
         "name": "标签管理",
-        "path": "/tags",
-        "icon": "custom icon-iconset0169",
+        "icon": "folder-open",
         "children": [
             {
                 "name":"基础分类",
-                "path":"/tags/list",
-                "icon": "custom icon-biaoqian1"
+                "path":"/tags/list"
             },
             {
                 "name":"运营分类",
-                "path":"/tags/operate",
-                "icon": "custom icon-biaoqian2"
+                "path":"/tags/operate"
             }
         ]
     },
     {
         "name": "音频管理",
-        "path": "/music",
-        "icon": "custom icon-wenjianyinpin",
+        "icon": "customer-service",
         "children": [
             {
                 "name":"音乐列表",
-                "path":"/demo/music/musicList",
-                "icon": "custom icon-dianyingzhiye-gequbangdianjitai"
+                "path":"/music/musicList"
             },
             {
                 "name":"歌曲列表",
-                "path":"/demo/music/ListOfSongs",
-                "icon": "custom icon-dianyingzhiye-gequbang"
+                "path":"/music/ListOfSongs"
             },
             {
                 "name":"电台列表",
-                "path":"/demo/music/Radiolist",
-                "icon": "custom icon-diantaizhibo"
+                "path":"/radio/list"
             }
         ]
     },
     {
         "name": "内容管理",
-        "path": "/",
-        "icon": "custom icon-neirong",
+        "icon": "book",
         "children": [
             {
                 "name":"文章管理",
-                "path":"/article",
-                "icon": "custom icon-wenzhang"
+                "path":"/article"
             },
             {
                 "name":"评论管理",
-                "path":"/comment",
-                "icon": "custom icon-pinglun1"
-            },
-            {
-                "name":"素材管理",
-                "path":"/material",
-                "icon": "custom icon-fenxi",
-                "children": [
-                    {
-                        "name":"歌曲素材",
-                        "path":"/material/audio",
-                        "icon": "custom icon-fenxi"
-                    },
-                    {
-                        "name":"图片素材",
-                        "path":"/material/image",
-                        "icon": "custom icon-fenxi"
-                    },
-                    {
-                        "name":"视频素材",
-                        "path":"/material/video",
-                        "icon": "custom icon-fenxi"
-                    }
-                ]
+                "path":"/comment"
             }
         ]
     },
     {
         "name": "App设置",
-        "path": "/app",
-        "icon": "custom icon-wenjianyinpin",
+        "icon": "appstore",
         "children": [
             {
                 "name":"版本管理",
-                "path":"/app/edition",
-                "icon": "custom icon-dianyingzhiye-gequbangdianjitai"
+                "path":"/app/edition"
             },
             {
                 "name":"搜索热词",
-                "path":"/app/hotword",
-                "icon": "custom icon-dianyingzhiye-gequbang"
+                "path":"/app/hotword"
             },
             {
                 "name":"帮助中心",
-                "path":"/app/help",
-                "icon": "custom icon-diantaizhibo"
+                "path":"/app/help"
             },
             {
                 "name":"意见反馈",
-                "path":"/app/feedback",
-                "icon": "custom icon-diantaizhibo"
+                "path":"/app/feedback"
             },
             {
                 "name":"推荐计划",
-                "path":"/app/recommend",
-                "icon": "custom icon-diantaizhibo"
+                "path":"/app/recommend"
             }
         ]
     },
     {
         "name": "推送管理",
-        "path": "/message",
-        "icon": "custom icon-wenjianyinpin",
+        "icon": "pull-request",
         "children": [
             {
                 "name":"App消息推送",
-                "path":"/message/app",
-                "icon": "custom icon-dianyingzhiye-gequbangdianjitai"
+                "path":"/message/app"
             },
             {
                 "name":"广告推送",
-                "path":"/message/ad",
-                "icon": "custom icon-dianyingzhiye-gequbang"
+                "path":"/message/ad"
             },
             {
                 "name":"消息模板",
-                "path":"/message/template",
-                "icon": "custom icon-diantaizhibo"
+                "path":"/message/template"
             },
             {
                 "name":"消息中心",
-                "path":"/message/centre",
-                "icon": "custom icon-diantaizhibo"
+                "path":"/message/centre"
             }
         ]
     },
     {
         "name": "系统管理",
-        "path": "/system",
-        "icon": "custom icon-wenjianyinpin",
+        "icon": "setting",
         "children": [
             {
                 "name":"权限管理",
-                "path":"/auth",
-                "icon": "custom icon-dianyingzhiye-gequbangdianjitai"
+                "path":"/auth"
             },
             {
                 "name":"角色管理",
-                "path":"/user/role",
-                "icon": "custom icon-dianyingzhiye-gequbang"
+                "path":"/user/role"
             },
             {
                 "name":"账号管理",
-                "path":"/user",
-                "icon": "custom icon-diantaizhibo"
+                "path":"/user"
             },
             {
                 "name":"操作日志",
-                "path":"/system/logs",
-                "icon": "custom icon-diantaizhibo"
+                "path":"/system/logs"
             }
         ]
     }

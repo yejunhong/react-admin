@@ -19,12 +19,9 @@ async function ArticleList(search: {title?: string, user?: string}, page: number
   console.log(info);
 }
 
-function GetMenu(): any {
-  const list =request.Get('http://127.0.0.1:3000/menu.json').then((res: any) => {
-    console.log(res)
-    return res;
-  });
-  return list;
+async function GetMenu(): Promise<any> {
+  const res = await request.Get('http://127.0.0.1:3000/menu.json')
+  return res;
 }
 
 export {ArticleList, GetMenu}

@@ -1,27 +1,41 @@
-.App {
-  text-align: center;
+.menu-trigger{
+  font-size: 24px;
+}
 
-  .App-header {
-    background-color: #222;
-    height: 150px;
-    padding: 20px;
-
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-      height: 80px;
-    }
-
-    h2 {
-      color: white;
-    }
+.header{
+  display: flex;
+  align-items: center;
+  height: 55px !important;
+  padding: 0 3px !important;
+  background-color: #fff !important;
+  margin-bottom: 1px;
+}
+.navTop{
+  background-color: #fff;
+  .ant-tabs-bar{
+    margin: 0 !important;
+    border-bottom: none;
   }
-
-  .App-intro {
-    font-size: large;
+  .ant-tabs-nav .ant-tabs-tab {
+    padding: 6px 3px !important;
   }
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.content{
+  margin: 5px;
+  padding: 5px;
+  background-color: #fff;
+  min-height: calc(100vh - 55px - 30px - 14px - 8px) !important;
+}
+
+.ant-advanced-search-form {
+  padding: 24px;
+}
+
+.ant-advanced-search-form .ant-form-item {
+  display: flex;
+}
+
+.ant-advanced-search-form .ant-form-item-control-wrapper {
+  flex: 1;
 }

@@ -1,10 +1,22 @@
 import React from 'react';
-import {HashRouter} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 import { Switch, Route, RouteComponentProps } from 'react-router';
 import Main from '../Views/Main';
 import Login from '../Views/Login';
-import Test from '../Views/Test';
-import Test1 from '../Views/Test1';
+
+import AppEdition from '../Views/System/AppEdition';
+import AppFeedback from '../Views/System/AppFeedback';
+import AppHelp from '../Views/System/AppHelp';
+import AppHotword from '../Views/System/AppHotword';
+import AppRecommend from '../Views/System/AppRecommend';
+import Auth from '../Views/System/Auth';
+import Logs from '../Views/System/Logs';
+import MessageAd from '../Views/System/MessageAd';
+import MessageApp from '../Views/System/MessageApp';
+import MessageCenter from '../Views/System/MessageCenter';
+import MessageTemplate from '../Views/System/MessageTemplate';
+import User from '../Views/System/User';
+import UserRole from '../Views/System/UserRole';
 
 interface RouterParam {
   path?: string;
@@ -15,14 +27,26 @@ interface RouterParam {
 }
 
 const childrenR: RouterParam[] =  [
-  {
-    path: '/test001',
-    component: Test
-  },
-  {
-    path: '/test002',
-    component: Test1
-  },
+
+  // App设置
+  { path: "/app/edition",  component: AppEdition },
+  { path: "/app/hotword", component: AppHotword },
+  { path: "/app/help", component: AppHelp },
+  { path: "/app/feedback", component: AppFeedback },
+  { path: "/app/recommend", component: AppRecommend },
+
+  // 推送管理
+  { path: "/message/app",  component: MessageApp },
+  { path: "/message/ad", component: MessageAd },
+  { path: "/message/template", component: MessageTemplate },
+  { path: "/message/center", component: MessageCenter },
+
+  // 系统管理
+  { path: "/auth",  component: Auth },
+  { path: "/user/role", component: UserRole },
+  { path: "/user", component: User },
+  { path: "/system/logs", component: Logs }
+
 ];
 
 const routes: RouterParam[] = [
@@ -40,7 +64,6 @@ const SwitchRoute = React.createElement(Switch, {}, routes.map((route: RouterPar
         exact: true,
         render(props: RouteComponentProps): React.ReactNode {
           // 授权
-          console.log(props);
           return React.createElement(children.component as any);
         }
       });
@@ -57,4 +80,4 @@ const SwitchRoute = React.createElement(Switch, {}, routes.map((route: RouterPar
   });
 }))
 
-export default React.createElement(HashRouter, {}, SwitchRoute);
+export default React.createElement(BrowserRouter, {}, SwitchRoute);
